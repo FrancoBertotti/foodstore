@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista del aministrador</title>
+</head>
+<body>
+    <header>
+        <h1>Panel de administracion</h1>
+        <nav>
+            <a href="../../../index.html">Volver a inicio</a>
+
+            <a href="./admin.html">Panel Admin</a>
+        </nav>
+        <hr>
+    </header>
+    <main>
+        <aside>
+            <h4>Gestion de productos</h4>
+            <button type="button">+ Nuevo Producto</button>
+            <br><br>
+            
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Categoria</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th>1</th>
+                    <td><img src="../../assets/h doble.png" alt="hamburguesa doble" width="100px"></tb>
+                    <td>Hamburguesa doble</td>
+                    <td>Hamburguesas</td>
+                    <td>$16000</td>
+                    <td>13</td>
+                    <td><a href="">Editar</a> | <a href="">Eliminar</a></td>
+                </tbody>
+                <tbody>
+                    <th>2</th>
+                    <td><img src="../../assets/marguerita.png" alt="pizza marguerita" width="100px"></tb>
+                    <td>Pizza marguerita</td>
+                    <td>Pizzas</td>
+                    <td>$19000</td>
+                    <td>9</td>
+                    <td><a href="">Editar</a> | <a href="">Eliminar</a></td>
+                </tbody>
+                <tbody>
+                    <th>3</th>
+                    <td><img src="../../assets/h triple.png" alt="hamburguesa triple" width="100px"></tb>
+                    <td>Hamburguesa triple</td>
+                    <td>Hamburguesas</td>
+                    <td>$20000</td>
+                    <td>21</td>
+                    <td><a href="">Editar</a> | <a href="">Eliminar</a></td>
+                </tbody>
+            </table>
+        </aside>
+        <hr>
+        <form>
+        <h4>Agregar producto rapido</h4>
+        <label for="nombre producto">Nombre producto:</label><br>
+        <input type="text" id="nombre producto" name="nombre producto" required placeholder="Ej: papas fritas a caballo" required
+            title="Solo letras, mínimo 3 caracteres"><br><br>
+
+        <label for="Precio">Precio:</label><br>
+        <input type="number" id="Precio" name="Precio" required placeholder="Ej: 5000" required title="Coloque el precio"><br><br>
+
+        <label for="Stock inicial">Stock inicial:</label><br>
+        <input type="number" id="Stock inicial" name="Stock inicial" required placeholder="Ej: 8"
+            title="Formato numero entero"><br><br>
+        
+
+        <label for="Categoria">Categoria:</label><br>
+
+        <select name="Categoria" id="categoria" required>
+        <option value="" disabled selected>Seleccione una opción</option>
+        <option >Hambuerguesas</option>
+        <option >Pizzas</option>
+        <option >Guarniciones</option>
+        <option >Bebidas</option>
+        </select>
+
+        <br><br>
+        <label for="descripción">Descripción:</label><br>
+        <textarea id="descripción" name="descripción" rows="4" cols="30" required
+            placeholder="Ingrese los ingredientes aqui."></textarea>
+            <br>
+        <button type="submit">Guardar Producto</button>
+        </form>
+    </main>
+    <hr>
+    <footer>
+        <p>2026 Panel de administración - Food Store v1.0</p>
+        <p>Contacto: <a href="">foodstore@gmail.com</a></p>
+    </footer>
+    <script type="module" src="../../main.ts"></script>
+</body>
+</html>

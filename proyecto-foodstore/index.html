@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Store</title>
+</head>
+<body>
+    <header>
+        <h1>Food Store</h1>
+        <nav>
+            <a href="./index.html">Inicio</a>
+            <a href="">Mis pedidos</a>
+            <a href="">Carrito</a>
+            <a href="./src/pages/admin/admin.html">Panel Admin</a>
+            <a href="./src/pages/auth/login/login.html">Login</a>
+        </nav>
+        <hr>
+        <aside>
+            <h4>Categorias</h4>
+            <ul id="lista-categorias"></ul>
+        </aside>
+    </header>
+    <main>
+        <label for="buscador"></label>
+        <input type="text" id="buscador" name="buscador" placeholder="Que quieres comer hoy?" required
+        title="Solo letras, mínimo 3 caracteres">
+        <button type="submit">Buscar</button><br><br>
+        <article>
+            <h2>Productos recomendados</h2>
+            <section id="contenedor-productos"></section>
+        </article>
+    </main>
+    <hr>
+    <footer>
+        <p>© 2026 Food Store. Todos los derechos reservados.</p><br>
+        <p>Contacto: <a href="">foodstore@gmail.com</a></p>
+    </footer>
+    <script src="./js/data.js"></script> 
+    <script src="./js/main.js"></script>
+    <script type="module" src="/src/main.ts"></script> 
+</body>
+</html>
