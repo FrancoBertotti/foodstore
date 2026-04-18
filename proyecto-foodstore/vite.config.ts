@@ -1,14 +1,18 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 export default defineConfig({
-  root: './',
-    build: {
+  build: {
     rollupOptions: {
-        input: {
-        main: './index.html',
-        login: './src/pages/login.html',
-        admin: './src/pages/admin.html',
-        },
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        login: resolve(__dirname, 'src/pages/auth/login/login.html'),
+        admin: resolve(__dirname, 'src/pages/admin/admin.html')
+      },
     },
-    },
+  },
+  server: {
+    port: 3000,
+    open: true
+  }
 });
