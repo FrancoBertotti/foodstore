@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <link rel="stylesheet" href="../../../style.css">
+</head>
+<body class="body-cart">
+    <header>
+        <div class="tabbar">
+            <img src="./../../../assets/logoSinFondo.png" alt="logotipo">
+            <nav>
+                <a href="./../../../../index.html">Inicio</a>
+                <a href="/src/pages/store/home/home.html">Catálogo</a>
+                <a href="">Mis pedidos</a>
+                <a href="/src/pages/store/cart/cart.html">Carrito</a>
+                <a href="/src/pages/auth/login/login.html">Login</a>
+                <span id="user-info"></span>
+                <button id="logout-btn" style="display:none;" class="checkout">Salir</button>
+            </nav>
+        </div>
+    </header>
+    <main class="main-cart">
+        <div  class="card-cart">
+            <h1>Tu Pedido</h1>
+            <section id="lista-carrito"></section>
+            <div id="resumen-compra" class="resumen">
+                <p>Total: <span id="precio-total">$0</span></p>
+                <button id="btn-vaciar">Vaciar carrito</button>
+                <button id="btn-finalizar">Comprar</button>
+            </div>    
+            <a class="ir-catalogo" href="./../home/home.html">Ir al catálogo</a>
+        </div>
+    </main>
+    <footer>
+        <p>© 2026 Food Store. Todos los derechos reservados.</p><br>
+        <p>Contacto: <a href="">foodstore@gmail.com</a></p>
+    </footer>
+    <script type="module" src="./cart.ts"></script>
+    <script type="module" src="../../../main.ts"></script>
+</body>
+</html>

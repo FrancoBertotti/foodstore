@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="./../../../style.css">
+</head>
+<body>
+    <header>
+        <div class="tabbar">
+            <img src="./../../../assets/logoSinFondo.png" alt="logotipo">
+            <nav>
+                <a href="./../../../../index.html">Inicio</a>
+                <a href="">Mis pedidos</a>
+                <a href="/src/pages/store/cart/cart.html">Carrito</a>
+                <a href="/src/pages/auth/login/login.html">Login</a>
+                <span id="user-info"></span>
+                <button id="logout-btn" style="display:none;" class="checkout">Salir</button>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Nuestro Menú</h1>
+        <div class="search-container">
+            <input type="text" id="buscador" placeholder="¿Qué querés comer hoy?">
+        </div>
+        <div class="categorias-container">
+            <nav >
+                <ul id="lista-categorias-home">/ul>
+            </nav>
+        </div>
+        <section id="contenedor-productos" class="products-grid"></section>
+    </main>
+    <footer>
+        <p>© 2026 Food Store. Todos los derechos reservados.</p><br>
+        <p>Contacto: <a href="">foodstore@gmail.com</a></p>
+    </footer>
+    <script type="module" src="./../../../main.ts"></script>
+    <script type="module" src="./home.ts"></script>
+</body>
+</html>

@@ -36,26 +36,21 @@ if (app) {
     formLogin.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        // 3. Capturamos los inputs por sus IDs
         const emailInput = document.getElementById("email") as HTMLInputElement;
         const passwordInput = document.getElementById("password") as HTMLInputElement;
 
-        // 4. Traemos los usuarios de localStorage
         const usuariosGuardados = localStorage.getItem("users");
         const listaUsuarios = usuariosGuardados ? JSON.parse(usuariosGuardados) : [];
 
-        // 5. Buscamos la coincidencia
         const usuarioEncontrado = listaUsuarios.find((u: any) => 
             u.email.toLowerCase() === emailInput.value.toLowerCase() && 
             u.password === passwordInput.value
         );
 
         if (usuarioEncontrado) {
-            // Guardamos la sesión
-            localStorage.setItem("userData", JSON.stringify(usuarioEncontrado));
+            localStorage.setItem("userData", JSON.stringify({ ...usuarioEncontrado, loggedIn: true }));
             alert(`¡Hola ${usuarioEncontrado.nombre}! Iniciando sesión...`);
             
-            // Redirección al index (ajustá los ../ según tu carpeta)
             window.location.href = "../../../../index.html";
         } else {
             alert("Email o contraseña incorrectos.");

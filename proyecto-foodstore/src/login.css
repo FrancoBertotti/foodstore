@@ -11,7 +11,8 @@ main{
     display: flex;            
     justify-content: center;    
     align-items: center;        
-    min-height: 90vh;
+    min-height: 85vh;
+    padding: 0;
 }
 
 .card{
@@ -45,7 +46,7 @@ main{
 
 .link{
     text-decoration: none;
-    color: rgb(212, 193, 140);
+    color: rgb(212, 160, 23);
     font-weight: bold;
 }
 
@@ -82,15 +83,15 @@ input{
 }
 
 input:focus{
-    border: 1px solid rgb(204, 167, 0);
+    border: 1px solid rgb(212, 160, 23);
 
     box-shadow: 0 0 12px rgba(228, 156, 1, 0.5);
     background-color: rgb(0, 0, 0);
-    color: rgb(230, 226, 1);
+    color: rgb(212, 160, 23);
 }
 
 button{
-    background-color: rgb(204, 167, 0);
+    background-color: rgb(244, 199, 0);
     font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
     color: rgb(0, 0, 0);
     border-radius: 5px;
@@ -124,5 +125,9 @@ nav{
 .botonNav{
     text-decoration: none;
     font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-size: small;
     color: antiquewhite;
+}
+.botonNav:hover {
+    color: #6000a9;                 
 }

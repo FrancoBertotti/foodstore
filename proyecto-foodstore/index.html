@@ -4,40 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Store</title>
+    <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
     <header>
-        <h1>Food Store</h1>
-        <nav>
-            <a href="./index.html">Inicio</a>
-            <a href="">Mis pedidos</a>
-            <a href="">Carrito</a>
-            <a href="/src/pages/admin/admin.html">Panel Admin</a>
-            <a href="/src/pages/auth/login/login.html">Login</a>
-        </nav>
-        <hr>
-        <aside>
-            <h4>Categorias</h4>
-            <ul id="lista-categorias"></ul>
+        <div class="tabbar">
+            <img src="./src/assets/logoSinFondo.png" alt="logotipo">
+            <nav>
+                <a href="./index.html">Inicio</a>
+                <a href="/src/pages/store/home/home.html">Catálogo</a>
+                <a href="">Mis pedidos</a>
+                <a href="/src/pages/store/cart/cart.html">Carrito</a>
+                <a href="/src/pages/admin/admin.html">Panel Admin</a>
+                <a href="/src/pages/auth/login/login.html">Login</a>
+                <span id="user-info"></span>
+                <button id="logout-btn" style="display:none;" class="checkout">Salir</button>
+            </nav>
+        </div>
+        <aside class="categorias-seccion">
+            <div class="categorias-container">
+                <h3>Categorías</h3>
+                <ul id="lista-categorias"></ul>
+            </div>
         </aside>
     </header>
     <main>
-        <label for="buscador"></label>
-        <input type="text" id="buscador" name="buscador" placeholder="Que quieres comer hoy?" required
-        title="Solo letras, mínimo 3 caracteres">
-        <button type="submit">Buscar</button><br><br>
+        <div class="contBusc">
+            <label for="buscador"></label>
+            <input type="text" id="buscador" name="buscador" placeholder="Que quieres comer hoy?" required title="Solo letras, mínimo 3 caracteres">
+            <button type="submit">Buscar</button><br><br>
+        </div>
         <article>
             <h2>Productos recomendados</h2>
-            <section id="contenedor-productos"></section>
+            <div id="contenedor-recomendados" class="productos-grid"></div>
         </article>
     </main>
-    <hr>
     <footer>
         <p>© 2026 Food Store. Todos los derechos reservados.</p><br>
-        <p>Contacto: <a href="">foodstore@gmail.com</a></p>
+        <p>Contacto: <a class="link-contact">foodstore@gmail.com</a></p>
     </footer>
-    <script src="./js/data.js"></script> 
-    <script src="./js/main.js"></script>
+    <!--<script src="./js/data.js"></script> 
+    <script src="./js/main.js"></script> -->
     <script type="module" src="./src/main.ts"></script>
 </body>
 </html>

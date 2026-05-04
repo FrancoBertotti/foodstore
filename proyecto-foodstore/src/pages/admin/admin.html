@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vista del aministrador</title>
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
     <header>
-        <h1>Panel de administracion</h1>
-        <nav>
+        <div class="tabbar">
+            <img src="./../../assets/logoSinFondo.png" alt="logotipo">
+            <nav>
             <a href="../../../index.html">Volver a inicio</a>
-
             <a href="./admin.html">Panel Admin</a>
-        </nav>
-        <hr>
+            <span id="user-info"></span>
+            <button id="logout-btn" style="display:none;" class="checkout">Salir</button>
+            </nav>
+        </div>
+        <h1>Panel de administracion</h1>
     </header>
-    <main>
+    <main class="main-admin">
         <aside>
-            <h4>Gestion de productos</h4>
-            <button type="button">+ Nuevo Producto</button>
-            <br><br>
-            
+            <h2>Gestion de productos</h2>
+            <button type="button">+ Nuevo Producto</button>            
             <table border="1">
                 <thead>
                     <tr>
@@ -40,7 +42,7 @@
                     <td>Hamburguesas</td>
                     <td>$16000</td>
                     <td>13</td>
-                    <td><a href="">Editar</a> | <a href="">Eliminar</a></td>
+                    <td><a href="" class="btn-accion">Editar</a>  <a href="" class="btn-accion">Eliminar</a></td>
                 </tbody>
                 <tbody>
                     <th>2</th>
@@ -49,7 +51,7 @@
                     <td>Pizzas</td>
                     <td>$19000</td>
                     <td>9</td>
-                    <td><a href="">Editar</a> | <a href="">Eliminar</a></td>
+                    <td><a href="" class="btn-accion">Editar</a>  <a href="" class="btn-accion">Eliminar</a></td>
                 </tbody>
                 <tbody>
                     <th>3</th>
@@ -58,11 +60,11 @@
                     <td>Hamburguesas</td>
                     <td>$20000</td>
                     <td>21</td>
-                    <td><a href="">Editar</a> | <a href="">Eliminar</a></td>
+                    <td class="seccion-acciones"><a href="" class="btn-accion">Editar</a>  <a href="" class="btn-accion">Eliminar</a></td>
                 </tbody>
             </table>
         </aside>
-        <hr>
+        <hr class="separador">
         <form>
         <h4>Agregar producto rapido</h4>
         <label for="nombre producto">Nombre producto:</label><br>
@@ -95,10 +97,9 @@
         <button type="submit">Guardar Producto</button>
         </form>
     </main>
-    <hr>
     <footer>
         <p>2026 Panel de administración - Food Store v1.0</p>
-        <p>Contacto: <a href="">foodstore@gmail.com</a></p>
+        <p>Contacto: <a class="link-contact">foodstore@gmail.com</a></p>
     </footer>
     <script type="module" src="../../main.ts"></script>
 </body>
