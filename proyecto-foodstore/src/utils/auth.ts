@@ -1,29 +1,22 @@
 import type { IUser } from "../types/IUser";
-import type { Rol } from "../types/Rol";
-import { getUSer, removeUser } from "./localStorage";
+import {getUSer, removeUser } from "./localStorage";
 import { navigate } from "./navigate";
 
-export const checkAuhtUser = (
-    redireccion1: string,
-    redireccion2: string,
-    rol: Rol
-) => {
-    console.log("comienzo de checkeo");
+    export const checkAuthUser = (): void => {
+    const user: IUser | null = getUSer();
+    const path = window.location.pathname;
+    const isLoginPage = path.includes('login.html');
+    const isRegisterPage = path.includes('registro.html');
+    const isPublicPage = isLoginPage || isRegisterPage || path === '/' || path.endsWith('index.html');
 
-    const user = getUSer();
-
-    if (!user) {
-    console.log("no existe en local");
-    navigate(redireccion1);
-    return;
+    if (!user || !user.loggedIn) {
+        if (!isPublicPage) {
+            window.location.href = '/src/pages/auth/login/login.html';
+        }
     } else {
-    console.log("existe pero no tiene el rol necesario");
-
-    const parseUser: IUser = JSON.parse(user);
-    if (parseUser.role !== rol) {
-        navigate(redireccion2);
-        return;
-    }
+        if (user.role === 'client' && path.includes('/admin/')) {
+            window.location.href = '/index.html'; 
+        }
     }
 };
 

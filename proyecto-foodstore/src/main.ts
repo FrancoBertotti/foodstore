@@ -1,27 +1,7 @@
 import type { IUser } from "./types/IUser";
 import { PRODUCTS, getCategories } from "./data/data";
+import {checkAuthUser} from "./utils/auth";
 
-// (el Guard)
-
-    const checkAuth = (): void => {
-    const sessionData = localStorage.getItem('userData');
-    const user: IUser | null = sessionData ? JSON.parse(sessionData) : null;
-    const path = window.location.pathname;
-
-    const isLoginPage = path.includes('login.html');
-    const isRegisterPage = path.includes('registro.html');
-    const isPublicPage = isLoginPage || isRegisterPage || path === '/' || path.endsWith('index.html');
-
-    if (!user || !user.loggedIn) {
-        if (!isPublicPage) {
-            window.location.href = '/src/pages/auth/login/login.html';
-        }
-    } else {
-        if (user.role === 'client' && path.includes('/admin/')) {
-            window.location.href = '/index.html'; 
-        }
-    }
-};
 // (Navbar)
     const updateNavbar = (): void => {
     const sessionData = localStorage.getItem('userData');
@@ -42,7 +22,6 @@ import { PRODUCTS, getCategories } from "./data/data";
 };
 
 // main.ts
-
 
     const contenedorIndex = document.getElementById('contenedor-recomendados');
 
@@ -125,7 +104,8 @@ function inyectarCategoriasIndex() {
 
 // Centralizá todas las ejecuciones dentro del DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-    checkAuth();
+    //checkAuth();
+    checkAuthUser();
     updateNavbar();
     cargarRecomendados();
     inyectarCategoriasIndex(); 
