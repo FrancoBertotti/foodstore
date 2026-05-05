@@ -67,21 +67,18 @@
         <hr class="separador">
         <form>
         <h4>Agregar producto rapido</h4>
-        <label for="nombre producto">Nombre producto:</label><br>
+        <label id="label" for="nombre producto">Nombre producto:</label><br>
         <input type="text" id="nombre producto" name="nombre producto" required placeholder="Ej: papas fritas a caballo" required
             title="Solo letras, mínimo 3 caracteres"><br><br>
 
         <label for="Precio">Precio:</label><br>
         <input type="number" id="Precio" name="Precio" required placeholder="Ej: 5000" required title="Coloque el precio"><br><br>
-
         <label for="Stock inicial">Stock inicial:</label><br>
         <input type="number" id="Stock inicial" name="Stock inicial" required placeholder="Ej: 8"
             title="Formato numero entero"><br><br>
         
-
-        <label for="Categoria">Categoria:</label><br>
-
-        <select name="Categoria" id="categoria" required>
+        <label for="categoria">Categoria:</label><br>
+        <select name="categoria" id="categoria" required>
         <option value="" disabled selected>Seleccione una opción</option>
         <option >Hambuerguesas</option>
         <option >Pizzas</option>
