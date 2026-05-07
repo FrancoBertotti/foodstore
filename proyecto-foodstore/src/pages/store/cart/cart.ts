@@ -1,4 +1,3 @@
-
 import type { Product } from './../../../types/product';
 
 const contenedor = document.getElementById('lista-carrito');
@@ -16,7 +15,7 @@ function renderizarCarrito() {
         return;
     }
 
-    // Agrupamos para mostrar cantidades
+    // Agrupacion para mostrar cantidades
     const carritoAgrupado = new Map<number, { producto: Product, cantidad: number }>();
     carritoRaw.forEach((p) => {
         if (carritoAgrupado.has(p.id)) {
@@ -35,7 +34,7 @@ function renderizarCarrito() {
 
         const fila = document.createElement('div');
         fila.classList.add('item-carrito');
-        // Agregamos el botón con un data-id para saber qué borrar
+        //boton con un data-id para saber qué borrar
         fila.innerHTML = `
             <div class="info-producto">
                 <h4>${item.producto.nombre} x${item.cantidad}</h4>
@@ -50,8 +49,8 @@ function renderizarCarrito() {
 
     totalElemento.innerText = `$${totalGeneral}`;
     
-    // Importante: Volver a escuchar los clicks de los nuevos botones
-    configurarBotonesEliminar();
+configurarBotonesEliminar();
+
 }
 btnVaciar?.addEventListener('click', () => {
     if (confirm("¿Seguro que querés vaciar el carrito?")) {
@@ -74,10 +73,9 @@ function configurarBotonesEliminar() {
 function eliminarProducto(id: number) {
     const carritoActual: Product[] = JSON.parse(localStorage.getItem('carrito') || '[]');
     
-    // Filtramos: dejamos todos los productos EXCEPTO los que tengan ese ID
+    // elimina los de ese ID y vuleve a generar el carrito
     const nuevoCarrito = carritoActual.filter(p => p.id !== id);
     
-    // Guardamos y refrescamos la pantalla
     localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
     renderizarCarrito();
 }

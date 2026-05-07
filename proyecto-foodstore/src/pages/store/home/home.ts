@@ -1,23 +1,17 @@
-// home.ts
 import { PRODUCTS, getCategories } from './../../../data/data';
 
-// 1. Capturamos los elementos del DOM una sola vez al principio
 const contenedor = document.getElementById('contenedor-productos');
 const inputBuscador = document.getElementById('buscador') as HTMLInputElement;
 
-// 2. Función principal para renderizar
+// para renderizar
 function renderizarCatalogo() {
-    // Verificamos que el contenedor exista para evitar el error de "posible null"
     if (!contenedor) return;
 
-    // Obtener filtros (Categoría de la URL + Texto del Buscador)
     const urlParams = new URLSearchParams(window.location.search);
     const idFiltro = urlParams.get('filtro');
     const textoBusqueda = inputBuscador?.value.toLowerCase() || "";
-
-    // Aplicar los filtros
     const productosFiltrados = PRODUCTS.filter(prod => {
-        // Filtro por categoría
+        // Filtro por categoria
         const coincideCategoria = idFiltro 
             ? prod.categorias.some(cat => cat.id === parseInt(idFiltro)) 
             : true;
@@ -29,7 +23,7 @@ function renderizarCatalogo() {
         return coincideCategoria && (coincideNombre || coincideDescripcion);
     });
 
-    // Limpiar el contenedor antes de dibujar
+    // Limpia el contenedor
     contenedor.innerHTML = "";
     
     if (productosFiltrados.length === 0) {
@@ -37,7 +31,7 @@ function renderizarCatalogo() {
         return;
     }
 
-    // Dibujar los productos
+    // inyeccion html
     productosFiltrados.forEach(prod => {
         if (!prod.eliminado) {
             const card = document.createElement('article');
@@ -56,11 +50,10 @@ function renderizarCatalogo() {
         }
     });
 
-    // IMPORTANTE: Configurar botones después de crear el HTML
     configurarBotones();
 }
 
-// 3. Lógica del Carrito
+//Carrito para pasar proximante al otro TS
 function configurarBotones() {
     const botones = document.querySelectorAll('.btn-agregar');
     botones.forEach(boton => {
@@ -82,16 +75,9 @@ function agregarAlCarrito(id: number) {
     }
 }
 
-// 4. Event Listeners
 inputBuscador?.addEventListener('input', () => {
     renderizarCatalogo();
 });
-
-// Carga inicial al abrir la página
-renderizarCatalogo();
-
-// home.ts
-
 
 const contenedorCategorias = document.getElementById('lista-categorias-home');
 
@@ -101,7 +87,7 @@ function renderizarBarraCategorias() {
     const categorias = getCategories();
     contenedorCategorias.innerHTML = "";
 
-    // Botón para "Ver Todos"
+    // Boton "Ver Todos"
     const liTodos = document.createElement('li');
     liTodos.innerHTML = `<button class="btn-categoria" data-id="all">Todos</button>`;
     contenedorCategorias.appendChild(liTodos);
@@ -121,7 +107,6 @@ function configurarClicksCategorias() {
         btn.addEventListener('click', (e) => {
             const id = (e.target as HTMLButtonElement).dataset.id;
             
-            // Actualizamos la URL sin recargar la página (esto es muy Pro)
             const url = new URL(window.location.href);
             if (id === "all") {
                 url.searchParams.delete('filtro');
@@ -130,13 +115,11 @@ function configurarClicksCategorias() {
             }
             window.history.pushState({}, '', url);
 
-            // Llamamos a la función que ya tenés para filtrar y mostrar
             renderizarCatalogo();
         });
     });
 }
 
-// home.ts -> dentro de renderizarBarraCategorias o al final del archivo
 function resaltarBotonActivo() {
     const params = new URLSearchParams(window.location.search);
     const idActivo = params.get('filtro') || 'all';
@@ -145,29 +128,20 @@ function resaltarBotonActivo() {
     botones.forEach(btn => {
         const botonEl = btn as HTMLButtonElement;
         if (botonEl.dataset.id === idActivo) {
-            botonEl.classList.add('active'); // Asegurate de tener .active en tu CSS
+            botonEl.classList.add('active');
         } else {
             botonEl.classList.remove('active');
         }
     });
 }
 
-// Llamala siempre después de renderizar la barra y el catálogo
-resaltarBotonActivo();
-
-// En el inicio del archivo, además de renderizarCatalogo:
-renderizarBarraCategorias();
-renderizarCatalogo();
-// home.ts - Al final del archivo
-
-// Modificamos para que el resaltado sea parte del renderizado
 function ejecutarTodo() {
     renderizarBarraCategorias();
     renderizarCatalogo();
     resaltarBotonActivo();
 }
 
-// Escuchar cuando el usuario vuelve atrás/adelante en el navegador
+// cuando se regar la pag en el navegador
 window.addEventListener('popstate', () => {
     renderizarCatalogo();
     resaltarBotonActivo();

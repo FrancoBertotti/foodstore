@@ -2,7 +2,7 @@ import type { IUser } from "../types/IUser";
 import {getUSer, removeUser } from "./localStorage";
 import { navigate } from "./navigate";
 
-    export const checkAuthUser = (): void => {
+export const checkAuthUser = (): void => {
     const user: IUser | null = getUSer();
     const path = window.location.pathname;
     const isLoginPage = path.includes('login.html');

@@ -2,7 +2,7 @@ import type { IUser } from "./types/IUser";
 import { PRODUCTS, getCategories } from "./data/data";
 import {checkAuthUser} from "./utils/auth";
 
-// (Navbar)
+// Navbar
     const updateNavbar = (): void => {
     const sessionData = localStorage.getItem('userData');
     const user: IUser | null = sessionData ? JSON.parse(sessionData) : null;
@@ -14,28 +14,27 @@ import {checkAuthUser} from "./utils/auth";
         if (logoutBtn) {
             logoutBtn.style.display = 'block';
             logoutBtn.addEventListener('click', () => {
-                localStorage.removeItem('userData');
+                localStorage.removeItem('userData'); // se puede usar la funcion del auth (proxima mejora)
                 window.location.href = 'login.html';
             });
         }
     }
 };
 
-// main.ts
+// main de index productos recomendados, 
 
     const contenedorIndex = document.getElementById('contenedor-recomendados');
 
     function cargarRecomendados() {
     if (!contenedorIndex) return;
 
-    // Supongamos que queremos mostrar solo los primeros 2 productos como "recomendados"
     const recomendados = PRODUCTS.slice(0, 2);
 
-    contenedorIndex.innerHTML = ""; // Limpiar
+    contenedorIndex.innerHTML = "";
 
     recomendados.forEach(prod => {
         const card = document.createElement('div');
-        card.className = 'producto-card'; // Tu clase de CSS
+        card.className = 'producto-card'; 
 
         card.innerHTML = `
             <img src="${prod.imagen || './src/assets/placeholder.png'}" alt="${prod.nombre}">
@@ -53,7 +52,7 @@ import {checkAuthUser} from "./utils/auth";
     configurarBotonesCarrito();
 }
 
-// Reutilizamos la lógica del carrito que hablamos antes
+// lógica del carrito llamada por la funcion de arriba
 function configurarBotonesCarrito() {
     const botones = document.querySelectorAll('.btn-agregar');
     botones.forEach(btn => {
@@ -64,6 +63,7 @@ function configurarBotonesCarrito() {
     });
 }
 
+//funcion que puede estar en cart.ts en la siguiente mejora
 function agregarAlCarrito(id: number) {
     const producto = PRODUCTS.find(p => p.id === id);
     if (producto) {
@@ -74,10 +74,7 @@ function agregarAlCarrito(id: number) {
     }
 }
 
-// Iniciar carga
-cargarRecomendados();
-
-// main.ts (el script de tu index.html)
+// Se inyecta las categorias en el index quye redirigen al home(catalogo)
 
 function inyectarCategoriasIndex() {
     const listaUl = document.getElementById('lista-categorias');
@@ -89,9 +86,7 @@ function inyectarCategoriasIndex() {
     categorias.forEach(cat => {
         const li = document.createElement('li');
         const link = document.createElement('a');
-        
-        // Usamos la ruta completa desde la raíz para evitar errores de nivel de carpeta
-        // Y usamos 'filtro' que es lo que lee tu home.ts
+
         link.href = `/src/pages/store/home/home.html?filtro=${cat.id}`;
         
         link.textContent = cat.nombre;
@@ -102,9 +97,8 @@ function inyectarCategoriasIndex() {
     });
 }
 
-// Centralizá todas las ejecuciones dentro del DOMContentLoaded
+// ejecuciones dentro del DOMContentLoaded una vez cargado el DOM
 document.addEventListener('DOMContentLoaded', () => {
-    //checkAuth();
     checkAuthUser();
     updateNavbar();
     cargarRecomendados();
